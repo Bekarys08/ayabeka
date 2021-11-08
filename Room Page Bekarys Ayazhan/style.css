@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Spartan', sans-serif;
+    height: 100vh;
+}
+
+.home {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "ci ci ci ci ci ci ci ct ct ct ct ct"
+        "ci ci ci ci ci ci ci ct ct ct ct ct"
+        "hai1 hai1 hai1 hat hat hat hat hat hat hai2 hai2 hai2"
+}
+
+/* Row 1:- */
+.home__carousel {
+    grid-area: ci;
+    grid-row: 1/3;
+    position: relative;
+    overflow: hidden;
+}
+
+.home__carousel__images {
+    display: flex;
+    min-width: 113%;
+}
+
+.home__carousel__images img {
+    min-width: 896px;
+}
+
+@media(min-width: 481px) and (max-width: 1366px) {
+    .home__carousel__images img {
+        min-width: 797px;
+    }
+}
+/* Worked after commenting this and adding min-width 896px
+.home__hero__img {
+    object-fit: cover;
+    width: 900px;
+} */
+
+#home__carousel__nav {
+    position: absolute;
+    display: flex;
+    top: 3rem;
+    left: 2.8rem;
+    z-index: 110;
+}
+
+#home__carousel__nav__links {
+    display: flex;
+    margin-left: 2rem;
+}
+
+#home__carousel__nav li {
+    list-style: none;
+    margin-left: 1.5rem;
+    font-size: 0.8rem;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+#home__carousel__nav li:hover::after {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    top: 1.1rem;
+    width: 5%;
+    height: 2px;
+    left: 50%;
+    right: 50%;
+    animation-name: link_hover;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes link_hover {
+    from {width: 5%; left: 50%; right: 50%;}
+    to {width: 100%; left: 0%; right: 0%;}
+}
+
+.home__text {
+    position: relative;
+    grid-row: 3/5;
+    grid-area: ct;
+    height: 100%;
+    padding: 15%;
+    /* display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr); */
+}
+
+.home__text__heading {
+    font-size: 2rem;
+    font-weight: 700;
+    /* grid-row: 3/4;
+    grid-column: 3/11; */
+}
+
+.home__text__para {
+    margin-top: 2rem;
+    color: #a1a1a1;
+    line-height: 20px;
+    font-size: 12px;
+    /* grid-row: 5/8;
+    grid-column: 3/11; */
+}
+
+@keyframes home__text__fade__in {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+@keyframes home__text__fade__out {
+    from { opacity: 100%; }
+    to { opacity: 0%; }
+}
+
+.home__text__button {
+    position: absolute;
+    margin-top: 2rem;
+    letter-spacing: 8px;
+    font-size: 0.8rem;
+    /* grid-row: 8/9;
+    grid-column: 3/11; */
+}
+
+.home__text__button:hover {
+    color: #707070;
+    transition: color 0.2s ease-in-out;
+}
+
+.home__text__button:hover > .home__text__button__arrow {
+    animation-name: slideout;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideout {
+    from {margin-left: 0.6rem; filter: opacity(100%);}
+    to {margin-left: 1.4rem; filter: opacity(50%);}
+}
+
+.home__text__button {
+    cursor: pointer;
+}
+
+.home__text__button__arrow {
+    margin-top: 8px;
+    margin-left: 0.6rem;
+}
+
+.home__text__arrows__parent {
+    position: absolute;
+    /* grid-row: 10/13;
+    grid-column: 1/5; */
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 80px;
+    width: 160px;
+    cursor: pointer;
+}
+
+.home__text__left__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    background-color: #000;
+}
+
+.home__text__right__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    background-color: #000;
+}
+
+.home__text__left__arrow:hover, .home__text__right__arrow:hover {
+    background-color: #555555;
+    transition-property: background-color;
+    transition-duration: 0.4s;
+}
+
+/* ROW 2:- */
+.home__about__img1 {
+    grid-row: 3/4;
+    grid-area: hai1;
+}
+
+.home__about__text {
+    grid-row: 3/4;
+    grid-area: hat;
+    display: grid;
+    align-items: center;
+    max-width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+
+#home__about__heading {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#home__about__para {
+    color: #a1a1a1;
+    line-height: 20px;
+    font-size: 12px;
+    margin-top: 0.9rem;
+}
+
+.home__about__img2 {
+    grid-row: 3/4;
+    grid-area: hai2;
+}
+
+#home__about__img1, #home__about__img2 {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 481px) {
+    #home__carousel__nav__links img {
+        display: none;
+    }
+    #home__carousel__nav__hamburger {
+        display: none;
+    }
+}
+
+/* -----MOBILE----- */
+@media (max-width: 480px) {
+    
+    .home {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: 
+            "ci"
+            "ct"
+            "hai1"
+            "hat"
+            "hai2"
+    }
+
+    .home__hero__img {
+        min-width: 100vw;
+    }
+
+    #home__carousel__nav {
+        width: 100%;
+        left: 0;
+    }
+
+    #home__carousel__nav li {
+        margin-right: 3.5rem;
+    }
+
+    #home__carousel__nav__hamburger {
+        margin-left: 2.5rem;
+    }
+    
+    #home__carousel__nav__logo {
+        padding-right: 2rem;
+        margin: auto;
+    }
+ 
+    #home__carousel__nav__links {
+        position: fixed;
+        display: flex;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: #fff;
+        margin: auto;
+        padding-left: 2rem;
+        align-items: center;
+        justify-self: center;
+        visibility: hidden;
+    }
+
+    #home__carousel__nav__links li {
+        color: #000;
+        font-weight: 600;
+        margin-right: 0;
+    }
+
+    #home__carousel__nav__links #link__home {
+        margin-left: 3rem;
+    }
+
+    #home__carousel__nav__links img {
+        margin-bottom: 1px;
+    }
+    
+    .home__carousel__images img {
+        min-width: 100vw;
+    }
+
+    .home__text {
+        margin-top: 96%;
+        padding: 10%;
+        padding-top: 20%;
+        padding-bottom: 30%;
+        height: unset;
+    }
+
+    .home__text__heading {
+        font-size: 1.7rem;
+    }
+
+    .home__text__arrows__parent {
+        left: auto;
+        right: 0;
+        top: -55.5px;
+    }
+
+    .home__about__text {
+        max-width: unset;
+        padding: 20% 10%;
+    }
+
+    @keyframes nav__fade__in {
+        from { opacity: 0%; height: 0vh; }
+        to { opacity: 100%; height: 12vh; visibility: visible;}
+    }
+
+    @keyframes nav__fade__out {
+        from { opacity: 100%; height: 12vh; }
+        to { opacity: 0%; height: 0vh; }
+    }
+
+}
